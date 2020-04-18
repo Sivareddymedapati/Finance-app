@@ -1,38 +1,168 @@
+* {
+	box-sizing: border-box;
+	position: relative;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.nav_login{
+	background-color:#7abed6 ;
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	padding-top: 20px;
+	color:white;
+	text-align: left;
+	font-size: 10px;
+	padding-left:20px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .nav_bar {
+	  margin-top: 60px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  
+  .nav_login{
+	  height: 650px;
+	  width: 250px;
+	  }
+
+
+.loginForm {
+		height:500px;
+		width:600px;
+		position:absolute;
+		right:400px;
+	  }
+
+.lgn_heading{
+ margin-left:100px;
+ font-size: 20px;
+ margin-bottom: 20px;
+}
+
+ .loginFormLabel {
+		height:100px;
+		left:50px;
+		position:absolute;
+		margin:0;
+		padding:0;
+		margin-top:7px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: bold;
+			
+		}	 
+.formLabel{
+	margin-bottom:10px;
+	
+		}	
+
+.loginFormInput {
+    right:50px;
+	position: absolute;
+		}
+
+.lgn_btn{
+	color:white;
+	background-color: #7a8787;
+	position: absolute;
+	right:0px;
+}
+
+
+ul{
+	list-style: none;
+}		
+.input{
+  width:300px;
+  margin:5px;
+}
+
+
+[class*="grid-"] {
+	float: left;
+	padding: 5px;
+	position: relative;
+	 }
+
+.grid-12 {
+	width: 100%
+}
+
+.grid-11 {
+	width: 91.66666667%
+}
+
+.grid-10 {
+	width: 83.33333333%
+}
+
+.grid-9 {
+	width: 75%
+}
+
+.grid-8 {
+	width: 66.66666667%
+}
+
+.grid-7 {
+	width: 58.33333333%
+}
+
+.grid-6 {
+	width: 50%
+}
+
+.grid-5 {
+	width: 41.66666667%
+}
+
+.grid-4 {
+	width: 33.33333333%
+}
+
+.grid-3 {
+	width: 25%
+}
+
+.grid-2 {
+	width: 16.66666667%
+}
+.grid-1 {
+	width: 8.33333333%
+}
+.grid-0{width:fit-content;}
+
+
+.user_login{
+    border-style: solid;
+    padding-top:10px;
+    padding-bottom:10px;
+    height:50px;
+    border-color:#d3d3d3;
+    border-bottom-width: 0.5ch;
+    border-top-width:0.1ch;
+}
+
+.loginText{
+    color:#7e909c;
+    font-size: 12px;
+    padding-right:5px;
+    font-weight:bold;
+}
+.fa-power-off{
+    color:red;
+    font-size:12px;
+    cursor: pointer;
+    }
+
+.formLabel{
+	margin-bottom:15px;
+	margin-left:50px;
 }

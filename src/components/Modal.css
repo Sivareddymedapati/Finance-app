@@ -1,0 +1,60 @@
+.modal {
+    position: fixed;
+    top: 50px;
+    right: 300px;
+    width:600px;
+    height: 300px;
+    background: white;
+  }
+  .fa-window-close-o{
+      color:red;
+      margin-left:250px;
+      cursor:pointer;
+     
+  }
+
+ 
+  .customersForm{
+      border:solid;
+      border-color: #dddddd;
+      height:300px;
+  }
+
+  .saveBtn{
+      color:White;
+      background-color: #7e8c8c;
+      position:fixed;
+      right:330px;
+      top:300px;
+      padding-left:10px;
+      padding-right:10px;
+  }
+  .customerListLabel {
+      margin-top:27px;
+      width:200px;
+  }
+
+  .customerListLabel li{
+      margin-bottom:28px;
+      font-size: 12px;
+      
+  }
+
+  .customerListInput input{
+      margin-bottom:20px;
+      width:300px;
+  }
+
+   .customerListInput {
+    padding:10px;
+    margin:20px;
+    width:100px;
+}
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
