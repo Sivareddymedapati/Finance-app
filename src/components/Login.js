@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom"
-import Main from '../components/Main'
-import {UserProvider} from '../components/Context/Context'
-
 
 
 class Login extends Component {
@@ -41,10 +37,7 @@ class Login extends Component {
              }   
 
         return (
-            <Router>
-            <Switch>
-            <div>
-                <div>
+           <div>
               <div className="nav_login">
                <div className="nav_bar">
                    <h2>Login</h2>
@@ -73,12 +66,7 @@ class Login extends Component {
                 </form> 
                 </div>
                 
-                <UserProvider value="Siva">
-                    <Route path="/main" exact render={ (props) => <Main  sch={this.state.sch}/> } />
-                </UserProvider>   
-                    </div> 
-                  </Switch>
-                </Router>
+               
             
         )
     }

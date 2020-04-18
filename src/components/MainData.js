@@ -4,6 +4,7 @@ import uuid from 'uuid';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Navigation from '../components/Navigation'
 import Signin from './Signin'
+import Login from '../components/Login'
 
 
 const default_user= {
@@ -171,10 +172,11 @@ class MainData extends Component {
       <div>
         <Navigation/> 
         <Signin />
+        <Route path="/" exact component={Login} />
+        <Route path="/customers">
         <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
-       {/* <Route exact path="/main/customers" render={(props) => <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />} /> */}
-        <Route path="/customers" exact component = {Customers} />
-        {/* <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} /> */}
+        </Route>
+        
       </div>
       </Switch>
     </Router>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Navigation.css'
-import { UserConsumer } from './Context/Context'
+
 
 
 class Navigation extends Component {
@@ -19,12 +19,9 @@ class Navigation extends Component {
    
     
     render() {
-            const {sch} = this.props
+            
         return (
             <div className="menu">
-                <UserConsumer>
-                   {(sch) => {return <div>{sch}</div>}}
-                </UserConsumer>
                 <div className="sideBar">
                         <button className="dropdown-btn" onClick={() => {this.setState({Customers:!this.state.Customers})}}>Customers<i className={this.state.Customers ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Customers ? "active" : "inactive"}>
