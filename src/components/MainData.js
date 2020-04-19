@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import Customers from '../components/Customers';
+import Prize from '../components/Prize';
+import FinanceExpenditure from '../components/FinanceExpenditure'
+import FinanceToCustomers from '../components/FinanceToCustomers'
 import uuid from 'uuid';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Navigation from '../components/Navigation'
@@ -168,17 +171,25 @@ class MainData extends Component {
   render(){
     return (
       <Router>
-      <Switch>
-      <div>
-        <Navigation/> 
-        <Signin />
-        <Route path="/" exact component={Login} />
-        <Route path="/customers">
-        <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
-        </Route>
-        
-      </div>
-      </Switch>
+        <Switch>
+          <div>
+            <Navigation/> 
+            <Signin />
+            <Route path="/" exact component={Login} />
+            <Route path="/customers" exact>
+              <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
+            </Route>
+            <Route path="/prize" exact>
+              <Prize users={this.state.users}/>
+            </Route>  
+            <Route path="/FinanceExpenditure" exact>
+              <FinanceExpenditure />
+            </Route>
+            <Route path="/FinanceToCustomers" exact>
+              <FinanceToCustomers />
+            </Route>
+          </div>
+        </Switch>
     </Router>
       
     );
