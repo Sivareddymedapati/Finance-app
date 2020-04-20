@@ -31,7 +31,7 @@ class Login extends Component {
         
         const handleSubmit = e => {
             e.preventDefault()
-            if(this.state.name==="user" && this.state.pass==="a") {this.props.history.push('/main');}
+            if(this.state.name==="user" && this.state.pass==="a") {this.props.history.push('/customers');}
                 else {alert("Invalid User")}
              }   
 

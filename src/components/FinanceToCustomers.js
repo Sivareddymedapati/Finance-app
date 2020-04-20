@@ -130,7 +130,9 @@ class FinanceToCustomers extends Component {
         })
         };
         
-      saveData = (e) =>{
+      saveData = (e, props) =>{
+        let validate = this.props.usersFin.map((item) => {return item.id == this.state.user.id})
+        let valid = validate.indexOf(true) 
         let {users, user} = this.state;
         let id = user.id;
         let customerName = user.customerName;
@@ -139,7 +141,7 @@ class FinanceToCustomers extends Component {
         let paymentType = user.paymentType;
 
            
-            
+        if (valid !== -1) {    
         if(this.state.act ===0) {
           let user = {id,customerName,paymentDate,amount,paymentType}
           users.push(user);
@@ -158,7 +160,7 @@ class FinanceToCustomers extends Component {
           users:users,
           act:0,
           user: {...default_user}
-        });} 
+        });} else {alert("Enter valid Customer id")}} 
           
     
       

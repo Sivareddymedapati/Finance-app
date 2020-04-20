@@ -118,7 +118,8 @@ class Prize extends Component {
                       userPrize: {...default_userPrize},
                       act:0,
                       index:'',
-                      show: false}
+                      show: false,
+                      }
       }
     
       showPrizeModal = () => {
@@ -140,7 +141,17 @@ class Prize extends Component {
         })
         };
         
-      saveData = (e) =>{
+    
+    
+      saveData = (e,props) =>{
+       
+        console.log(this.state.userPrize.id);
+        
+        let validate = this.props.users.map((task) => { return (task.id == this.state.userPrize.id)})
+        console.log(validate.indexOf(true))
+        let valid = validate.indexOf(true) 
+
+        if (valid !== -1) {
         let {usersPrize, userPrize} = this.state;
         let id = userPrize.id;
         let prizeName = userPrize.prizeName;
@@ -149,9 +160,7 @@ class Prize extends Component {
         let paidAmount = userPrize.paidAmount;
         let term = userPrize.term;
 
-        
-        
-    
+           
         if(this.state.act ===0) {
           let userPrize = {id,prizeName,Date,prizeAmount,paidAmount,term}
           usersPrize.push(userPrize);
@@ -164,12 +173,15 @@ class Prize extends Component {
           usersPrize[index].paidAmount = paidAmount;
           usersPrize[index].term = term;
         }
-        console.log(this.state.users)
+        console.log(this.state.usersPrize)
         this.setState({
           usersPrize:usersPrize,
           act:0,
           userPrize: {...default_userPrize}
         });} 
+
+        else {alert("Invalid Customer Id")}
+      }
           
     
       

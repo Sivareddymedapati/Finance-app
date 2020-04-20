@@ -186,7 +186,7 @@ class MainData extends Component {
               <FinanceExpenditure />
             </Route>
             <Route path="/FinanceToCustomers" exact>
-              <FinanceToCustomers />
+              <FinanceToCustomers usersFin= {this.state.users} />
             </Route>
           </div>
         </Switch>
