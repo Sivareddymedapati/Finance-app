@@ -4,13 +4,12 @@ import './Customers.css'
 import MainData from '../components/MainData'
 import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
-import './Modal.css'
 import './UserList.css'
 import Scheme from '../components/Scheme'
 Modal.setAppElement('#root')
 
 
-class Customers extends Component {
+class CustomerReport extends Component {
 
     constructor(props) {
         super(props)
@@ -41,7 +40,7 @@ class Customers extends Component {
         return (
             <div>
                 <Signin />
-                
+                <Scheme />
             <div>
             <div className="grid-2"></div>
             <div className="grid-10">
@@ -55,7 +54,6 @@ class Customers extends Component {
                         <input className="filterInput" type="text" name="userName" placeholder="Enter Name" value={this.state.username} onChange={this.updateUserName}/>
                         <input className="filterInput" type="text" name="mobile" placeholder="Enter mobile" value={this.state.mobile} onChange={this.updateMobile}/>
                         <input className="filterInput" type="text" name="village" placeholder="Village" value={this.state.village} onChange={this.updateVillage}/>
-                        <button className="add_btn"type="button" onClick={this.props.showModal}><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Customer</button>
                     </div>       
                 </div>
             </div>
@@ -127,4 +125,4 @@ class Customers extends Component {
     }
 }
 
-export default Customers
+export default CustomerReport

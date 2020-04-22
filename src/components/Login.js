@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Scheme from '../components/Scheme'
 
 class Login extends Component {
 
@@ -8,7 +9,8 @@ class Login extends Component {
         this.state = {
              name:"",
              pass:"",
-             sch:""
+             sch:"",
+             error:""
         }
     }
     updateName = (event) => {
@@ -32,11 +34,12 @@ class Login extends Component {
         const handleSubmit = e => {
             e.preventDefault()
             if(this.state.name==="user" && this.state.pass==="a") {this.props.history.push('/customers');}
-                else {alert("Invalid User")}
+                else {this.setState({error:"Invalid user"})}
              }   
 
         return (
            <div>
+               
               <div className="nav_login">
                <div className="nav_bar">
                    <h2>Login</h2>
@@ -51,6 +54,7 @@ class Login extends Component {
                     <li className="formLabel">Scheme</li>
                 </ul>
                 <div className="loginFormInput lgn"> 
+                    
                     <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.state.name} onChange={this.updateName}/><br/>
                     <input className="input" type="password" name="Password" required placeholder="Password" value={this.state.pass} onChange={this.updatePass} /><br/>
                     <select className="input" name="SCHEME" required placeholder="Select Scheme" value={this.state.sch} onChange={this.updateSch}>
@@ -60,9 +64,11 @@ class Login extends Component {
                     <option value="SCHEME M">SCHEME M</option>
                     </select><br/>
                    <button className="lgn_btn" type="submit">Login</button>
+                   <div>{this.state.error}</div>
                 </div>    
                  
                 </form> 
+               
                 </div>
                 
                

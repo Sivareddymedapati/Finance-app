@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Customers.css'
+import Signin from '../components/Signin'
 import MainData from '../components/MainData'
 import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
@@ -202,6 +203,7 @@ class Prize extends Component {
        
         return (
             <div>
+              <Signin />
             <div>
             <div className="grid-2"></div>
                 <div className="grid-10">
@@ -265,7 +267,7 @@ class Prize extends Component {
                             <tr key={index} className="borderColor">
                             <td className="tableData">{item.id}</td>
                             <td className="tableData"> {item.prizeName}</td>
-                            <td className="tableData"> {item.date}</td>
+                            <td className="tableData"> {item.Date}</td>
                             <td className="tableData"> {item.prizeAmount}</td>
                             <td className="tableData"> {item.paidAmount}</td>
                             <td className="tableData"> {item.term}</td>

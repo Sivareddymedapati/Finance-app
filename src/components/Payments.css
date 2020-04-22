@@ -1,0 +1,26 @@
+.customerForm{
+    height:250px;
+    width:550px;
+    margin-left:200px;
+    border:0;
+    text-align:left;
+}
+
+
+.customerListinput{
+    width:350px;
+    border:0;
+    padding:0;
+    margin:0;
+    margin-top:30px;
+
+}
+
+.customerListinput input{
+   width:350px; 
+   margin-bottom:20px;
+}
+
+.saveButton{
+    margin-left:20px;
+}

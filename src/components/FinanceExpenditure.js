@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Customers.css'
+import Signin from '../components/Signin' 
 import MainData from '../components/MainData'
 import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
@@ -163,6 +164,7 @@ class FinanceExpenditure extends Component {
        
         return (
             <div>
+              <Signin />
             <div>
             <div className="grid-2"></div>
                 <div className="grid-10">

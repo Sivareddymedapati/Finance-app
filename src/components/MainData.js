@@ -8,6 +8,10 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Navigation from '../components/Navigation'
 import Signin from './Signin'
 import Login from '../components/Login'
+import MobileNumber from '../components/MobileNumber'
+import CustomerReport from '../components/CustomerReport'
+import PaymentsByIndividuals from '../components/PaymentsByIndividuals'
+import Scheme from '../components/Scheme'
 
 
 const default_user= {
@@ -174,8 +178,8 @@ class MainData extends Component {
         <Switch>
           <div>
             <Navigation/> 
-            <Signin />
             <Route path="/" exact component={Login} />
+            <Scheme />
             <Route path="/customers" exact>
               <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
             </Route>
@@ -187,6 +191,15 @@ class MainData extends Component {
             </Route>
             <Route path="/FinanceToCustomers" exact>
               <FinanceToCustomers usersFin= {this.state.users} />
+            </Route>
+            <Route path="/mobile" exact>
+              <MobileNumber users={this.state.users}/>
+            </Route>
+            <Route path="/customerReport" exact>
+              <CustomerReport show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData}/>
+            </Route>
+            <Route path="/paymentsByIndividuals" exact>
+              <PaymentsByIndividuals usersPay={this.state.users}/>
             </Route>
           </div>
         </Switch>
