@@ -11,98 +11,12 @@ import Login from '../components/Login'
 import MobileNumber from '../components/MobileNumber'
 import CustomerReport from '../components/CustomerReport'
 import PaymentsByIndividuals from '../components/PaymentsByIndividuals'
-import Scheme from '../components/Scheme'
+import CustomerReportData from '../components/CustomerReportData'
+import {users, default_user} from '../data/Users'
+import {usersfinance, default_userfinance} from '../data/Usersfinance'
+import {userspayment, default_userpayment} from '../data/Userspayment'
 
 
-const default_user= {
-  id: '',
-  customerName : '',
-  fatherName: '',
-  mobileNumber:'',
-  village:''
-}
-const users = [
-  {
-    "id": 1,
-    "customerName": "Zoey Benson",
-    "fatherName": "Alexis Zamora",
-    "mobileNumber": "9880989871",
-    "village":'Hyderabad',
-    "uuid":uuid()
-  },
-  {
-    "id": 2,
-    "customerName": "Dangelo Rollins",
-    "fatherName": "Kailyn Shaffer",
-    "mobileNumber": "9880989872",
-    "village":'Banglore',
-    "uuid":uuid()
-  },
-  {
-    "id": 3,
-    "customerName": "uSkylar Byrd",
-    "fatherName": "Warren Villanueva",
-    "mobileNumber": "9880989873",
-    "village":'Pune',
-    "uuid":uuid()
-  },
-  {
-    "id": 4,
-    "customerName": "Soren Rios",
-    "fatherName": "Gregory Arellano",
-    "mobileNumber": "9880989874",
-    "village":'Pune',
-    "uuid":uuid()
-  },
-  {
-    "id": 5,
-    "customerName": "Autumn Hull",
-    "fatherName": "Jazlene Powers",
-    "mobileNumber": "9880989875",
-    "village":'Vishapatnam',
-    "uuid":uuid()
-  },
-  {
-    "id": 6,
-    "customerName": "Zoey Benson",
-    "fatherName": "Alexis Zamora",
-    "mobileNumber": "9888888888",
-    "village":'Kakinada',
-    "uuid":uuid()
-  },
-  {
-    "id": 7,
-    "customerName": "Dangelo Rollins",
-    "fatherName": "Kailyn Shaffer",
-    "mobileNumber": "9880989000",
-    "village":'Rajahmundry',
-    "uuid":uuid()
-  },
-  {
-    "id": 8,
-    "customerName": "uSkylar Byrd",
-    "fatherName": "Warren Villanueva",
-    "mobileNumber": "9887778730",
-    "village":'Delhi',
-    "uuid":uuid()
-  },
-  {
-    "id": 9,
-    "customerName": "Soren Rios",
-    "fatherName": "Gregory Arellano",
-    "mobileNumber": "7777989874",
-    "village":'Delhi',
-    "uuid":uuid()
-  },
-  {
-    "id": 10,
-    "customerName": "Autumn Hull",
-    "fatherName": "Jazlene Powers",
-    "mobileNumber": "9880989875",
-    "village":'Mysore',
-    "uuid":uuid()
-  }
-];
 class MainData extends Component {
   constructor(){
     super();
@@ -110,8 +24,37 @@ class MainData extends Component {
                   user: {...default_user},
                   act:0,
                   index:'',
-                  show: false}
+                  show: false,
+                  userspayment,
+                  userpayment: {...default_userpayment},
+                  actpayment:0,
+                  indexpayment:'',
+                  usersfinance,
+                  userfinance: {...default_userfinance},
+                  actfinance:0,
+                  indexfinance:'',
+                  showfinance: false,
+                  userfinance1: {...default_userfinance},
+                  actfinance1:0,
+                  indexfinance1:'',
+                  showfinance1: false,
+                  userpayment1: {...default_userpayment},
+                  actpayment1:0,
+                  indexpayment1:'',
+                  showpayment1: false,
+                  scheme:'',
+                  reportid:'',
+                  report:false,
+                  userDetails:'',
+                  userFinance:'',
+                  userPayment:''}
   }
+
+  updateScheme = (event) => {
+    this.setState({
+        scheme:event.target.value
+    })
+}
 
   showModal = () => {
     this.setState({ show: true });
@@ -171,15 +114,257 @@ class MainData extends Component {
      show: true
    })}
   
+   onInputChangepayment = (e)=>{
+    const {target} = e;
+    this.setState({
+        userpayment:{...this.state.userpayment,[target.name]:target.value}
+    })
+    };
+    
+  saveDatapayment = (e, props) =>{
+    let validate = this.state.users.map((item) => {return item.id == this.state.userpayment.id})
+    let valid = validate.indexOf(true) 
+    let {userspayment, userpayment} = this.state;
+    let id = userpayment.id;
+    let term = userpayment.term;
+    let paidDate = userpayment.paidDate;
+    let amount = userpayment.amount;
+    ;
+
+       
+    if (valid !== -1) {    
+    if(this.state.actpayment ===0) {
+      let userpayment = {id,term,paidDate,amount}
+      userspayment.push(userpayment);
+    } else {
+      let index = this.state.index;
+      userspayment[index].id = id;
+      userspayment[index].term = term;
+      userspayment[index].paidDate = paidDate;
+      userspayment[index].amount = amount;
+        }
+
+    console.log(this.state.userspayment)
+    this.setState({
+      userspayment:userspayment,
+      actpayment:0,
+      userpayment: {...default_userpayment}
+    });} 
+    else {alert("Enter valid Customer id")}} 
+      
+
+    showModalfinance = () => {
+      this.setState({ showfinance: true });
+    }
+    
+    hideModalfinance = () => {
+      this.setState({ 
+        showfinance: false,
+        userfinance: {...default_userfinance},
+        actfinance:0
+       });
+    }
+  
+    onInputChangefinance = (e)=>{
+      const {target} = e;
+      this.setState({
+          userfinance:{...this.state.userfinance,[target.name]:target.value}
+      })
+      };
+      
+    saveDatafinance = (e, props) =>{
+      let validate = this.state.users.map((item) => {return item.id == this.state.userfinance.id})
+      let valid = validate.indexOf(true) 
+      let {usersfinance, userfinance} = this.state;
+      let id = userfinance.id;
+      let customerName = userfinance.customerName;
+      let paymentDate = userfinance.paymentDate;
+      let amount = userfinance.amount;
+      let paymentType = userfinance.paymentType;
+
+         
+      if (valid !== -1) {    
+      if(this.state.actfinance ===0) {
+        let userfinance = {id,customerName,paymentDate,amount,paymentType}
+        usersfinance.push(userfinance);
+      } else {
+        let index = this.state.indexfinance;
+        usersfinance[index].id = id;
+        usersfinance[index].customerName = customerName;
+        usersfinance[index].paymentDate = paymentDate;
+        usersfinance[index].amount = amount;
+        usersfinance[index].paymentType = paymentType;
+       
+          }
+
+      console.log(this.state.usersfinance)
+      this.setState({
+        usersfinance:usersfinance,
+        actfinance:0,
+        userfinance: {...default_userfinance}
+      });} else {alert("Enter valid Customer id")}} 
+        
+  
+    
+   
+    findDataFinance = (index,uuid) =>{
+     
+     let userfinance = usersfinance.find((task) => {return task.uuid == uuid})
+     console.log(userfinance)
+     this.setState({
+       actfinance:1,
+       indexfinance:index,
+       userfinance:userfinance,
+       showfinance: true
+     });
+  }
+
+  showModalfinance1 = () => {
+    this.setState({ showfinance1: true });
+  }
+  
+  hideModalfinance1 = () => {
+    this.setState({ 
+      showfinance1: false,
+      userfinance1: {...default_userfinance},
+      actfinance1:0
+     });
+  }
+
+  onInputChangefinance1 = (e)=>{
+    const {target} = e;
+    this.setState({
+        userfinance1:{...this.state.userfinance1,[target.name]:target.value}
+    })
+    };
+    
+  saveDatafinance1 = (e, props) =>{
+    
+    let {usersfinance, userfinance1} = this.state;
+    let id = userfinance1.id;
+    let customerName = userfinance1.customerName;
+    let paymentDate = userfinance1.paymentDate;
+    let amount = userfinance1.amount;
+    let paymentType = userfinance1.paymentType;
+    let index = this.state.indexfinance1;
+      usersfinance[index].id = id;
+      usersfinance[index].customerName = customerName;
+      usersfinance[index].paymentDate = paymentDate;
+      usersfinance[index].amount = amount;
+      usersfinance[index].paymentType = paymentType;
+       
+
+    console.log(this.state.usersfinance)
+    this.setState({
+      usersfinance:usersfinance,
+      actfinance1:0,
+      userfinance1: {...default_userfinance}
+    });}
+      
+
+  
  
-  render(){
+  findDataFinance1 = (index,uuid) =>{
+   
+   let userfinance1 = this.state.userFinance.find((task) => {return task.uuid == uuid})
+   console.log(userfinance1)
+   this.setState({
+     actfinance1:1,
+     indexfinance1:index,
+     userfinance1:userfinance1,
+     showfinance1: true,
+     
+     
+   });
+}
+
+
+
+showModalpayment1 = () => {
+  this.setState({ showpayment1: true });
+}
+
+hideModalpayment1 = () => {
+  this.setState({ 
+    showpayment1: false,
+    userpayment1: {...default_userpayment},
+    actpayment1:0
+   });
+}
+
+onInputChangepayment1 = (e)=>{
+  const {target} = e;
+  this.setState({
+      userpayment1:{...this.state.userpayment1,[target.name]:target.value}
+  })
+  };
+  
+saveDatapayment1 = (e, props) =>{
+  
+  let {userspayment, userpayment1} = this.state;
+  let id = userpayment1.id;
+  let term = userpayment1.term;
+  let paidDate = userpayment1.paidDate;
+  let amount = userpayment1.amount;
+  let index = this.state.indexpayment1;
+    userspayment[index].id = id;
+    userspayment[index].term = term;
+    userspayment[index].paidDate = paidDate;
+    userspayment[index].amount = amount;
+    
+     
+
+  console.log(this.state.userspayment)
+  this.setState({
+    userspayment:userspayment,
+    actpayment1:0,
+    userpayment1: {...default_userpayment}
+  });}
+    
+
+
+
+findDatapayment1 = (index,uuid) =>{
+ 
+ let userpayment1 = this.state.userPayment.find((task) => {return task.uuid == uuid})
+ console.log(userpayment1)
+ this.setState({
+   actpayment1:1,
+   indexpayment1:index,
+   userpayment1:userpayment1,
+   showpayment1: true,
+   
+   
+ });
+}
+
+  findUser = (id) =>{
+    console.log(id)
+    let Details = this.state.users.filter((task) => {return task.id == id})
+    let Finance = this.state.usersfinance.filter((task) => {return task.id == id} )
+    let Payment = this.state.userspayment.filter((task) => {return task.id ==id})
+    
+    this.setState({
+      reportid:id,
+      userDetails:Details,
+      userFinance:Finance,
+      userPayment:Payment,
+      report:true,
+    })
+    console.log(this.state.userDetails)
+    console.log(this.state.userFinance)
+    console.log(this.state.userPayment)
+  }
+
+   render(){
     return (
       <Router>
         <Switch>
           <div>
-            <Navigation/> 
-            <Route path="/" exact component={Login} />
-            <Scheme />
+            <Navigation scheme={this.state.scheme}/> 
+            <Route path="/" exact >
+              <Login scheme={this.state.scheme} updateScheme={this.updateScheme}/>
+            </Route>
             <Route path="/customers" exact>
               <Customers show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
             </Route>
@@ -190,17 +375,18 @@ class MainData extends Component {
               <FinanceExpenditure />
             </Route>
             <Route path="/FinanceToCustomers" exact>
-              <FinanceToCustomers usersFin= {this.state.users} />
+              <FinanceToCustomers userfinance={this.state.userfinance} usersfinance={this.state.usersfinance} showfinance={this.state.showfinance} showModalfinance={this.showModalfinance} hideModalfinance={this.hideModalfinance} onInputChange={this.onInputChangefinance} saveData={this.saveDatafinance} findData={this.findDataFinance}/>
             </Route>
             <Route path="/mobile" exact>
               <MobileNumber users={this.state.users}/>
             </Route>
             <Route path="/customerReport" exact>
-              <CustomerReport show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData}/>
+              <ReportDisplay findDatapayment1={this.findDatapayment1} userpayment1={this.state.userpayment1} userspayment={this.state.userspayment} showpayment1={this.state.showpayment1} showModalpayment1={this.showModalpayment1} hideModalpayment1={this.hideModalpayment1} onInputChangepayment1={this.onInputChangepayment1} saveDatapayment1={this.saveDatapayment1} findDataFinance1={this.findDataFinance1} userfinance1={this.state.userfinance1} usersfinance={this.state.usersfinance} showfinance1={this.state.showfinance1} showModalfinance1={this.showModalfinance1} hideModalfinance1={this.hideModalfinance1} onInputChangefinance1={this.onInputChangefinance1} saveDatafinance1={this.saveDatafinance1}  userDetails={this.state.userDetails} userFinance={this.state.userFinance} userPayment={this.state.userPayment} report={this.state.report}   users={this.state.users}  findUser={this.findUser}/>
             </Route>
             <Route path="/paymentsByIndividuals" exact>
-              <PaymentsByIndividuals usersPay={this.state.users}/>
+              <PaymentsByIndividuals userpayment={this.state.userpayment} userspayment={this.state.userspayment} onInputChange={this.onInputChangepayment} saveData={this.saveDatapayment} />
             </Route>
+            
           </div>
         </Switch>
     </Router>
@@ -210,3 +396,8 @@ class MainData extends Component {
 }
 
 export default MainData;
+
+function ReportDisplay(props){
+
+  if(props.report) {return <CustomerReportData showpayment1={props.showpayment1} showModalpayment1={props.showModalpayment1} hideModalpayment1={props.hideModalpayment1} findDatapayment1={props.findDatapayment1} userpayment1={props.userpayment1} userspayment={props.userspayment}  onInputChangepayment1={props.onInputChangepayment1} saveDatapayment1={props.saveDatapayment1} showfinance1={props.showfinance1} showModalfinance1={props.showModalfinance1} hideModalfinance1={props.hideModalfinance1} findDataFinance1={props.findDataFinance1} userfinance1={props.userfinance1} usersfinance={props.usersfinance}  onInputChangefinance1={props.onInputChangefinance1} saveDatafinance1={props.saveDatafinance1}  userDetails={props.userDetails} userFinance={props.userFinance} userPayment={props.userPayment} users={props.users}/>} else {return <CustomerReport  users={props.users}  findUser={props.findUser}/>}
+}

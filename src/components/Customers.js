@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 import Modal from 'react-modal';
 import './Modal.css'
 import './UserList.css'
-import Scheme from '../components/Scheme'
 Modal.setAppElement('#root')
 
 

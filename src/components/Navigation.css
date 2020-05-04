@@ -38,11 +38,7 @@ body {
     
   }
   
-  
-  .menu a:hover {
-  background-color:rgba(112, 134, 142, 0.75);
-  }
-  
+    
   .inactive {
     display: none;
     background-color: #deeff5;

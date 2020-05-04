@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Scheme from '../components/Scheme'
+import {Redirect} from 'react-router-dom'
+
 
 class Login extends Component {
 
@@ -9,8 +10,8 @@ class Login extends Component {
         this.state = {
              name:"",
              pass:"",
-             sch:"",
-             error:""
+             error:"",
+             valid:false
         }
     }
     updateName = (event) => {
@@ -23,19 +24,18 @@ class Login extends Component {
             pass:event.target.value
         })
     }
-    updateSch = (event) => {
-        this.setState({
-            sch:event.target.value
-        })
-    }
+   
+    handleSubmit = e => {
+        e.preventDefault()
+        if(this.state.name==="user" && this.state.pass==="a") {
+            this.setState({valid:true})
+          }
+            else {this.setState({error:"Invalid user"})}
+         }   
     
     render() {   
         
-        const handleSubmit = e => {
-            e.preventDefault()
-            if(this.state.name==="user" && this.state.pass==="a") {this.props.history.push('/customers');}
-                else {this.setState({error:"Invalid user"})}
-             }   
+        if(this.state.valid) {return <Redirect to='/customers' />}
 
         return (
            <div>
@@ -46,7 +46,7 @@ class Login extends Component {
                    <h2>Terms and conditions</h2>
                </div>
                </div>
-               <form className="loginForm lgn" onSubmit={handleSubmit}> 
+               <form className="loginForm lgn" onSubmit={this.handleSubmit}> 
                 <h1 class="lgn_heading">Financier Login</h1>
                 <ul className="loginFormLabel ">
                     <li className="formLabel">User Name</li>
@@ -57,7 +57,7 @@ class Login extends Component {
                     
                     <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.state.name} onChange={this.updateName}/><br/>
                     <input className="input" type="password" name="Password" required placeholder="Password" value={this.state.pass} onChange={this.updatePass} /><br/>
-                    <select className="input" name="SCHEME" required placeholder="Select Scheme" value={this.state.sch} onChange={this.updateSch}>
+                    <select className="input" name="SCHEME" required placeholder="Select Scheme" value={this.props.scheme} onChange={this.props.updateScheme}>
                     <option></option>
                     <option value="SCHEME K">SCHEME K</option>
                     <option value="SCHEME L">SCHEME L</option>
