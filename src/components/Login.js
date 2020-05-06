@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import Loginbar from '../components/Loginbar'
 
 
 class Login extends Component {
@@ -39,21 +40,26 @@ class Login extends Component {
 
         return (
            <div>
-               
-              <div className="nav_login">
-               <div className="nav_bar">
-                   <h2>Login</h2>
-                   <h2>Terms and conditions</h2>
-               </div>
-               </div>
-               <form className="loginForm lgn" onSubmit={this.handleSubmit}> 
-                <h1 class="lgn_heading">Financier Login</h1>
-                <ul className="loginFormLabel ">
+             <Loginbar />  
+               <div className="grid-2"></div>
+               <div className="grid-10">
+               <div className="grid-1"></div>    
+               <form className="grid-7" onSubmit={this.handleSubmit}> 
+                <div>
+                <div className="grid-2"></div>
+                <h1 class="grid-8 loginHeading">Financier Login</h1>
+                <div className="grid-2"></div>
+                </div>
+                <div>
+                <div>    
+                <ul className="grid-4 inputLabel">
                     <li className="formLabel">User Name</li>
                     <li className="formLabel">Password</li>
                     <li className="formLabel">Scheme</li>
                 </ul>
-                <div className="loginFormInput lgn"> 
+                </div>
+                
+                <div className="grid-7 loginInput"> 
                     
                     <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.state.name} onChange={this.updateName}/><br/>
                     <input className="input" type="password" name="Password" required placeholder="Password" value={this.state.pass} onChange={this.updatePass} /><br/>
@@ -63,12 +69,18 @@ class Login extends Component {
                     <option value="SCHEME L">SCHEME L</option>
                     <option value="SCHEME M">SCHEME M</option>
                     </select><br/>
-                   <button className="lgn_btn" type="submit">Login</button>
+                </div>  
+                </div> 
+                  <div> 
+                   <div className="grid-5"></div>
+                   <button className="grid-2 subBtn" type="submit">Login</button>
+                   </div>
                    <div>{this.state.error}</div>
-                </div>    
+                  
                  
                 </form> 
-               
+                <div className="grid-3"></div>
+                </div>
                 </div>
                 
                

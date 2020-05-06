@@ -161,6 +161,12 @@ class FinanceExpenditure extends Component {
     }
   
        render() {
+         
+        const divStyle = {
+          height: '250px',
+          border:'solid',
+          borderColor:'#dddddd',
+                 };
        
         return (
             <div>
@@ -177,10 +183,10 @@ class FinanceExpenditure extends Component {
             <div className="dataForm">
                 <div className="grid-2"></div>  
                 <div className="grid-10">
-                <Modal isOpen={this.state.show} handleClose={this.state.show} className ="modal" >
-
-                <div className="customersForm">
-                
+                <Modal  isOpen={this.state.show} handleClose={this.state.show} className ="modal" >
+                 
+                <div style={divStyle}>
+                    <div>
                     <div className="grid-3">
                         <ul className="customerListLabel">
                             <li>Expense Amount</li>
@@ -188,16 +194,23 @@ class FinanceExpenditure extends Component {
                             <li>Description</li>
                        </ul>
                     </div>
-                    <div className="customerListInput grid-9">
+                    <div className="customerListInput grid-8">
                     <input type="text" name="expenseAmount" placeholder="Amount" onChange={this.onInputChange} value={this.state.user.expenseAmount}/><br/>
-                    <input type="text" name="expenseDate" placeholder="yyyy-mm-dd" onChange={this.onInputChange} value={this.state.user.expenseDate} /><br/>
+                    <input type="date" name="expenseDate" placeholder="yyyy-mm-dd" onChange={this.onInputChange} value={this.state.user.expenseDate} /><br/>
                     <input type="text" name="Description" placeholder="Description" onChange={this.onInputChange} value={this.state.user.Description}/><br/>
-                    </div><br />
-                    <div className="grid-0"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.hideModal}></i></div>
-                    <div><button type="button" className="saveBtn" onClick={this.saveData}>Save</button></div>
+                    </div>
+                    <div className="grid-1">
+                    <div><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.hideModal}></i></div>
+                    </div>
+                     </div>
+                     <div>
+                    <div className="grid-5"></div>
+                    <div className="grid-2 savebtn"><button type="button" className="saveBtn" onClick={this.saveData}>Save</button></div>
+                    </div>
                 </div>
+                
                 </Modal>
-                   
+                    
                     </div>
                 </div>
                 <div>

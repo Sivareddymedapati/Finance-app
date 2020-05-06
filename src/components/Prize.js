@@ -120,11 +120,14 @@ class Prize extends Component {
                       act:0,
                       index:'',
                       show: false,
+                      prizeEditBtn:false,
                       }
       }
     
       showPrizeModal = () => {
-        this.setState({ show: true });
+        this.setState({ 
+          show: true,
+          prizeEditBtn:false,});
       }
       
       hidePrizeModal = () => {
@@ -195,7 +198,8 @@ class Prize extends Component {
          act:1,
          index:index,
          userPrize:userPrize,
-         show: true
+         show: true,
+         prizeEditBtn:true,
        });
     }
   
@@ -219,7 +223,7 @@ class Prize extends Component {
                 <Modal isOpen={this.state.show} handleClose={this.state.show} className ="modal" >
 
                 <div className="customersForm">
-                
+                    <div>
                     <div className="grid-3">
                         <ul className="customerListLabel">
                             <li>Id</li>
@@ -230,16 +234,21 @@ class Prize extends Component {
                             <li>Term</li>
                         </ul>
                     </div>
-                    <div className="customerListInput grid-9">
+                    <div className="customerListInput grid-8">
                     <input type="text" name="id" placeholder="Customer Id" onChange={this.onInputChange} value={this.state.userPrize.id}/> <br/>        
                     <input type="text" name="prizeName" placeholder="Prize Name" onChange={this.onInputChange} value={this.state.userPrize.prizeName}/><br/>
-                    <input type="text" name="Date" placeholder="yyyy-mm-dd" onChange={this.onInputChange} value={this.state.userPrize.Date} /><br/>
+                    <input type="date" name="Date" placeholder="yyyy-mm-dd" onChange={this.onInputChange} value={this.state.userPrize.Date} /><br/>
                     <input type="text" name="prizeAmount" placeholder="Prize Amount" onChange={this.onInputChange} value={this.state.userPrize.prizeAmount}/><br/>
                     <input type="text" name="paidAmount" placeholder="Paid Amount" onChange={this.onInputChange} value={this.state.userPrize.paidAmount}/><br/>
                     <input type="text" name="term" placeholder="Term" onChange={this.onInputChange} value={this.state.userPrize.term}/><br/>
-                    </div><br />
-                    <div className="grid-0"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.hidePrizeModal}></i></div>
-                    <div><button type="button" className="saveBtn" onClick={this.saveData}>Save</button></div>
+                    </div>
+                    <div>
+                     <div className="grid-1"></div> 
+                    <div><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.hidePrizeModal}></i></div>
+                    </div>
+                    </div>
+                    <div className="grid-5"></div>
+        <div className="grid-2 savebtn"><button type="button" className={this.state.prizeEditBtn ? "greenActive":"saveBtn"} onClick={this.saveData}>{this.state.prizeEditBtn ? "Update":"Save"}</button></div>
                 </div>
                 </Modal>
                    

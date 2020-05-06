@@ -13,7 +13,6 @@
 .label {
     padding:0;
     width:500px;
-    margin-left:20px;
     text-align:left;
 }
 .fiterData{
@@ -46,7 +45,6 @@
 
 .mobileInput{
     width:100%;
-    margin-left:5px;
 }
 
 .mobileNumber{

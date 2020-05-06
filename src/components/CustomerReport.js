@@ -31,6 +31,7 @@ class CustomerReport extends Component {
     }
 
        render() {
+        let amount = this.props.userspayment.map((payment) => {return payment.amount})   
         
         let filteredNames = this.props.users.filter((user) => {return user.customerName.toLowerCase().indexOf(this.state.userName.toLowerCase()) !== -1})
         let filteredMobile = [...filteredNames].filter((user) => {return user.mobileNumber.indexOf(this.state.mobile) !== -1})
@@ -73,11 +74,13 @@ class CustomerReport extends Component {
                     <tbody>
                         {filteredData.map((item, index)=>{
                         return (
+                            
                             <tr key={index} className="borderColor">
                             <td className="tableData">{item.id}</td>
                             <td className="tableData"> {item.customerName}</td>
                             <td className="tableData"> {item.mobileNumber}</td>
                             <td className="tableData"> {item.village}</td>
+                           
                             <td className="tableData"> <button className="updateBtn" type="button" ><i className="updateBtn" onClick={() => {this.props.findUser(item.id)}} class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                             </tr>
                         );

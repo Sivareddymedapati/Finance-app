@@ -2,24 +2,45 @@ import React, { Component } from 'react'
 import Modal from 'react-modal';
 import './Modal.css'
 import '../components/CustomerReportData.css'
+import Signin from './Signin';
 Modal.setAppElement('#root')
+
 
 export class CustomerReportData extends Component {
     render() {
+
+        const divStyle = {
+            height: '250px',
+            border:'solid',
+            borderColor:'#dddddd',
+                   };
+
         return (
             <div>
+                <Signin />
                 <div>
                 <div className="grid-2"></div>
-                <div className="grid-10"></div>
-                <div>
+                <div className="grid-10 dataHeader">
+                 <div className="grid-2">
+                    <button className="list_btn" onClick={this.props.ViewList}>View List</button>
+                </div>   
+                
                 {this.props.userDetails.map((user) => {
                     return (
-                   <div>     
-                    <div>Customer Name:{user.customerName}</div>
-                    <div>Father Name:{user.fatherName}</div>
-                    <div>Paid Amount:{user.fatherName}</div>
-                    <div>Mobile Number:{user.mobileNumber}</div>
-                    <div>Actual Amount:{user.fatherName}</div>
+                   <div className="grid-9 data"> 
+
+                    <span className="dataFields grid-2 datalabel">Customer Name:</span>
+                    <span className="dataFields grid-2 inputcolor">{user.customerName}</span>
+                    <span className="dataFields grid-2 datalabel">Father Name:</span>
+                    <span className="dataFields grid-2 inputcolor">{user.fatherName}</span>
+                    <span className="dataFields grid-2 datalabel">Paid Amount:</span>
+                    <span className="dataFields grid-2 inputcolor">{this.props.paidamount}</span>
+                    <span className="dataFields grid-2 datalabel">Mobile Number:</span>
+                    <span className="dataFields grid-2 inputcolor">{user.mobileNumber}</span>
+                    <span className="dataFields grid-2 datalabel">Actual Amount:</span>
+                    <span className="dataFields grid-2 inputcolor">{this.props.actualamount}</span>
+                    <span className="dataFields grid-2 datalabel">Finance Amount:</span>
+                    <span className="dataFields grid-2 inputcolor">{this.props.financeamount}</span>
                     </div>
                 )})}
                 </div>
@@ -29,8 +50,8 @@ export class CustomerReportData extends Component {
                 <div className="grid-10">
                 <Modal isOpen={this.props.showpayment1} handleClose={this.props.showpayment1} className ="modal" >
 
-                <div className="customersForm">
-                
+                <div style={divStyle}>
+                    <div>
                     <div className="grid-3">
                         <ul className="customerListLabel">
                             <li>Term</li>
@@ -38,14 +59,15 @@ export class CustomerReportData extends Component {
                             <li>Amount</li>
                        </ul>
                     </div>
-                    <div className="customerListInput grid-9">
-                     
-                    <input type="text" name="term" placeholder="yyyy-mm-dd" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.term}/><br/>
-                    <input type="text" name="paidDate" placeholder="Amount" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.paidDate}/><br/>
-                    <input type="text" name="amount" placeholder="Payment Type" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.amount}/><br/>
+                    <div className="customerListInput grid-8">
+                    <input type="text" name="term" placeholder="Payment Type" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.term}/><br/> 
+                    <input type="date" name="paidDate" placeholder="yyyy-mm-dd" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.paidDate}/><br/>
+                    <input type="number" name="amount" placeholder="Amount" onChange={this.props.onInputChangepayment1} value={this.props.userpayment1.amount}/><br/>
                     </div><br />
-                    <div className="grid-0"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModalpayment1}></i></div>
-                    <div><button type="button" className="saveBtn" onClick={this.props.saveDatapayment1}>Save</button></div>
+                    <div className="grid-1"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModalpayment1}></i></div>
+                    </div>
+                    <div className="grid-5"></div>
+                    <div className="grid-2 savebtn"><button type="button" className="greenActive" onClick={this.props.saveDatapayment1}>Update</button></div>
                 </div>
                 </Modal>
                    
@@ -53,9 +75,9 @@ export class CustomerReportData extends Component {
                 </div>
                 <div>
                     <div className="grid-2"></div>
-                    <div className="grid-5 table">
-                    <div className="CustomerDetails">Payment Details</div>
-                    <table className="table">
+                    <div className="grid-5 ">
+                    <div className="CustomerDetailsReports">Payment Details</div>
+                    <table className="tableReports">
                      <thead>
                         <tr className="borderColor">
                             <th className="tableData">Term</th>
@@ -71,16 +93,17 @@ export class CustomerReportData extends Component {
                             <td className="tableData"> {item.term}</td>
                             <td className="tableData"> {item.paidDate}</td>
                             <td className="tableData"> {item.amount}</td>
-                            <td className="tableData"> <button className="updateBtn" type="button" ><i className="updateBtn" onClick={() => this.props.findDatapayment1(index,item.uuid)} class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                            <td className="tableData"> <button className="updateBtn" type="button" ><i className="updateBtn" onClick={() => this.props.findDatapayment1(index,item.uuid)} class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <button className="btn-edit del-btn" ><i class="fa fa-trash-o" aria-hidden="true" onClick={() =>this.props.deleteItemPayments(index,item.uuid)}></i></button></td>
                             </tr>
                         );
                         })}
                     </tbody>
                     </table>
                     </div>
-                    <div className="grid-5 table">
-                    <div className="CustomerDetails">Finance Details</div>
-                    <table className="table">
+                    <div className="grid-5 ">
+                    <div className="CustomerDetailsReports">Finance Details</div>
+                    <table className="tableReports">
                      <thead>
                         <tr className="borderColor">
                             <th className="tableData">Payment Date</th>
@@ -96,7 +119,8 @@ export class CustomerReportData extends Component {
                             <td className="tableData"> {item.paymentDate}</td>
                             <td className="tableData"> {item.amount}</td>
                             <td className="tableData"> {item.paymentType}</td>
-                            <td className="tableData"> <button className="updateBtn" type="button" ><i className="updateBtn" onClick={() => this.props.findDataFinance1(index,item.uuid)} class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                            <td className="tableData"> <button className="updateBtn" type="button" ><i className="updateBtn" onClick={() => this.props.findDataFinance1(index,item.uuid)} class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <button className="btn-edit del-btn" ><i class="fa fa-trash-o" aria-hidden="true" onClick={() =>this.props.deleteItem(index,item.uuid)}></i></button></td>
                             </tr>
                         );
                         })}
@@ -111,8 +135,9 @@ export class CustomerReportData extends Component {
                 <div className="grid-10">
                 <Modal isOpen={this.props.showfinance1} handleClose={this.props.showfinance1} className ="modal" >
 
-                <div className="customersForm">
-                
+                <div style={divStyle}>
+                   <div> 
+                  <div>
                     <div className="grid-3">
                         <ul className="customerListLabel">
                             <li>Payment Date</li>
@@ -120,14 +145,19 @@ export class CustomerReportData extends Component {
                             <li>Payment Type</li>
                        </ul>
                     </div>
-                    <div className="customerListInput grid-9">
+                    <div className="customerListInput grid-8">
                      
-                    <input type="text" name="paymentDate" placeholder="yyyy-mm-dd" onChange={this.props.onInputChangefinance1} value={this.props.userfinance1.paymentDate}/><br/>
-                    <input type="text" name="amount" placeholder="Amount" onChange={this.props.onInputChangefinance1} value={this.props.userfinance1.amount}/><br/>
+                    <input type="date" name="paymentDate" placeholder="yyyy-mm-dd" onChange={this.props.onInputChangefinance1} value={this.props.userfinance1.paymentDate}/><br/>
+                    <input type="number" name="amount" placeholder="Amount" onChange={this.props.onInputChangefinance1} value={this.props.userfinance1.amount}/><br/>
                     <input type="text" name="paymentType" placeholder="Payment Type" onChange={this.props.onInputChangefinance1} value={this.props.userfinance1.paymentType}/><br/>
-                    </div><br />
-                    <div className="grid-0"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModalfinance1}></i></div>
-                    <div><button type="button" className="saveBtn" onClick={this.props.saveDatafinance1}>Save</button></div>
+                    </div>
+                    <div className="grid-1"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModalfinance1}></i></div>
+                    </div> 
+                    <div className="grid-5"></div>
+                    <div className="grid-2 savebtn">
+                    <div><button type="button" className="greenActive" onClick={this.props.saveDatafinance1}>Update</button></div>
+                    </div>
+                    </div>
                 </div>
                 </Modal>
                    

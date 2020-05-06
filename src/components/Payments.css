@@ -6,6 +6,17 @@
     text-align:left;
 }
 
+.saveButton{
+    background-color:#7e8c8c;
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    height:30px;
+    width:80px;
+}
+.savebutton{
+    margin-left: 15px;
+}
 
 .customerListinput{
     width:350px;
@@ -14,6 +25,11 @@
     margin:0;
     margin-top:30px;
 
+}
+
+.tableHeading{
+ font-weight:bold;
+ font-size:12px;
 }
 
 .customerListinput input{

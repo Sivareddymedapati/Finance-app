@@ -27,6 +27,7 @@ class Navigation extends Component {
             Finance:false,
             Reports:false
         })
+        this.props.ViewList();
     }
 
     onClickPrizes = () =>{
@@ -37,6 +38,7 @@ class Navigation extends Component {
             Finance:false,
             Reports:false
         })
+        this.props.ViewList();
     }
 
     onClickPayments = () =>{
@@ -47,6 +49,7 @@ class Navigation extends Component {
             Finance:false,
             Reports:false
         })
+        this.props.ViewList();
     }
 
     onClickFinance = () =>{
@@ -57,6 +60,7 @@ class Navigation extends Component {
             Finance:!this.state.Finance,
             Reports:false
         })
+        this.props.ViewList();
     }
 
     onClickReports = () =>{
@@ -67,6 +71,7 @@ class Navigation extends Component {
             Finance:false,
             Reports:!this.state.Reports
         })
+        this.props.ViewList();
     }
    
     
@@ -74,7 +79,7 @@ class Navigation extends Component {
             
         return (
             <div className="menu">
-                <h4>{this.props.scheme}</h4>
+                <h4 className="Schema">{this.props.scheme}</h4>
                 <div className="sideBar">
                         <button className="dropdown-btn" onClick={this.onClickCustomers}>Customers<i className={this.state.Customers ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Customers ? "active" : "inactive"}>
@@ -87,7 +92,6 @@ class Navigation extends Component {
                         <button className="dropdown-btn" onClick={this.onClickPayments}>Payments<i className={this.state.Payments ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Payments ? "active" : "inactive"}>
                                 <Link to="/paymentsByIndividuals"><a href="#">Payments by Individuals</a></Link>
-                                <a href="#">Payments by Term</a>
                             </div>
                         <button className="dropdown-btn" onClick={this.onClickFinance}>Finance<i className={this.state.Finance ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Finance ? "active" : "inactive"}>
@@ -97,7 +101,6 @@ class Navigation extends Component {
                         <button className="dropdown-btn" onClick={this.onClickReports}>Reports<i className={this.state.Reports ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Reports ? "active" : "inactive"}>
                                 <Link to="/mobile"><a href="#">Mobile Numbers List</a></Link>
-                                <a href="#">Payment Details By Term</a>
                                 <Link to="/customerReport"><a href="#">Customer Report</a></Link>
                             </div>
                             	

@@ -20,6 +20,10 @@ body {
   .sideBar{
       margin-top:100px;
   }
+
+  .Schema{
+    color:White;
+  }
   
   .menu a, .dropdown-btn {
    

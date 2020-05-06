@@ -65,7 +65,7 @@ class Customers extends Component {
                 <Modal isOpen={show} handleClose={show} className ="modal" >
 
                 <div className="customersForm">
-                
+                   <div>
                     <div className="grid-3">
                         <ul className="customerListLabel">
                             <li>Id</li>
@@ -75,15 +75,20 @@ class Customers extends Component {
                             <li>Village</li>
                         </ul>
                     </div>
-                    <div className="customerListInput grid-9">
+                    <div className="customerListInput grid-8">
                     <input type="text" name="id" placeholder="Customer Id" onChange={this.props.onInputChange} value={this.props.user.id}/> <br/>        
                     <input type="text" name="customerName" placeholder="Customer Name" onChange={this.props.onInputChange} value={this.props.user.customerName}/><br/>
                     <input type="text" name="fatherName" placeholder="Customer Father Name" onChange={this.props.onInputChange} value={this.props.user.fatherName} /><br/>
                     <input type="text" name="mobileNumber" placeholder="Customer Mobile Number" onChange={this.props.onInputChange} value={this.props.user.mobileNumber}/><br/>
                     <input type="text" name="village" placeholder="Customer Village" onChange={this.props.onInputChange} value={this.props.user.village}/><br/>
                     </div><br />
-                    <div className="grid-0"><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModal}></i></div>
-                    <div><button type="button" className="saveBtn" onClick={this.props.onSaveData}>Save</button></div>
+                    <div className="grid-1">
+                    <div><i class="fa fa-window-close-o" aria-hidden="true" onClick={this.props.hideModal}></i></div>
+                    </div>
+                    </div>
+                    <div className="grid-5"></div>
+                    <div className="grid-2 savebtn"><button type="button" className={this.props.customersEditBtn ? "greenActive":"saveBtn"} onClick={this.props.onSaveData}>{this.props.customersEditBtn ? "Update":"Save"}</button></div>
+                    
                 </div>
                 </Modal>
                    

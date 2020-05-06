@@ -1,7 +1,7 @@
 table{
     
     width:1000px;
-    margin-left:20px;
+    margin-left:15px;
     border-collapse: collapse;
 }
 
@@ -19,12 +19,13 @@ table, tr {
   .updateBtn{
       background-color:#5e157c;
       color:white;
-  }
+      
+        }
 
   .CustomerDetails{
       border:1px solid #d6d6d6;
       width:1000px;
-      margin-left:20px;
+      margin-left:15px;
       text-align:left;
       font-weight: bold;
   }

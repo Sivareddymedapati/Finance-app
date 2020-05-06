@@ -1,6 +1,6 @@
 
 
-.table{
+.tableReports{
     font-size: 12px;
     width:500px;
     margin-left:20px;
@@ -17,12 +17,61 @@ table, tr {
   .updateBtn{
       background-color:#5e157c;
       color:white;
+      
   }
 
-  .CustomerDetails{
+  .CustomerDetailsReports{
       border:1px solid #d6d6d6;
       width:500px;
       margin-left:20px;
       text-align:left;
       font-weight: bold;
+      font-size: 12px;
+      
+  }
+
+  .dataHeader{
+    border-style: solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100px;
+    border-color: #d3d3d3;
+    border-bottom-width: 0.5ch;
+    border-top-width: 0.1ch;
+      
+  }
+  .dataFields{
+      display: inline;
+      margin-right:15px;
+      font-size: 12px;
+      text-align: left;
+      width:14%;
+      font-weight: bold;
+  }
+
+  .list_btn{
+      background-color: #16a084;
+      color:white;
+      padding: 5px;
+  }
+
+  .datalabel{
+      color: #47aedd;
+  }
+  .inputcolor{
+      color:#8a2b98;
+  }
+
+  .data{
+      padding:none;
+      margin-top:0px;
+  }
+
+  .fa-trash-o{
+      color:white;
+      
+      
+  }
+  .del-btn{
+      background-color: #e74938;
   }
