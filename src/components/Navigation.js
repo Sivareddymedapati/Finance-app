@@ -83,7 +83,7 @@ class Navigation extends Component {
                 <div className="sideBar">
                         <button className="dropdown-btn" onClick={this.onClickCustomers}>Customers<i className={this.state.Customers ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Customers ? "active" : "inactive"}>
-                                <Link to="/customers"><a href="#">Customers List</a></Link>
+                                <Link to="/" exact><a href="#">Customers List</a></Link>
                             </div>
                         <button className="dropdown-btn" onClick={this.onClickPrizes}>Prize<i className={this.state.Prizes ? "fa fa-angle-down":"fa fa-angle-right"}></i></button>
                             <div className={this.state.Prizes ? "active" : "inactive"}>
