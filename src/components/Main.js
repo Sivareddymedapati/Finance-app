@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MainData from './MainData'
 import Login from './Login'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 
  class Main extends Component {
  
@@ -73,5 +73,6 @@ function CheckLogin(props) {
         )
      } 
         else {
-        return <Login valid={props.valid} name={props.name} pass={props.pass} scheme={props.scheme} handleSubmit={props.handleSubmit} updatePass={props.updatePass} updateName={props.updateName} updateScheme={props.updateScheme} error={props.error} />}
-  }  
+        return (         
+        <Login valid={props.valid} name={props.name} pass={props.pass} scheme={props.scheme} handleSubmit={props.handleSubmit} updatePass={props.updatePass} updateName={props.updateName} updateScheme={props.updateScheme} error={props.error} />)
+    }}  
