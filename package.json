@@ -1,6 +1,6 @@
 {
-  "homepage": "https://sivareddymedapati.github.io/Finance-app/",
-  "name": "finance_app",
+  "homepage": "https://sivareddymedapati.github.io/financeApp/",
+  "name": "financeApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
