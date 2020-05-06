@@ -465,7 +465,7 @@ findDatapayment1 = (index,uuid) =>{
         <Switch>
           <div>
             <Navigation scheme={this.state.scheme} ViewList={this.ViewList}/> 
-            <Route path="/" customers>
+            <Route path="/" >
               <Customers customersEditBtn = {this.state.customersEditBtn} show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
             </Route>
             <Route path="/prize" exact>
