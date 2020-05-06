@@ -465,7 +465,7 @@ findDatapayment1 = (index,uuid) =>{
         <Switch>
           <div>
             <Navigation scheme={this.state.scheme} ViewList={this.ViewList}/> 
-            <Route path="/" exact >
+            <Route path="//" exact >
               <Login scheme={this.state.scheme} updateScheme={this.updateScheme}/>
             </Route>
             <Route path="/customers" exact>
