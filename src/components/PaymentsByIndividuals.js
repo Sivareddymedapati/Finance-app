@@ -9,7 +9,7 @@ class PaymentsByIndividuals extends Component {
        
         return (
             <div>
-              <Signin />
+              
              <div className="dataForm">
                 <div className="grid-2"></div>  
                 <div className="grid-10">

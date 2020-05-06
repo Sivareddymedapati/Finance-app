@@ -46,7 +46,7 @@ import {Redirect, Route} from 'react-router-dom'
                 valid:true,
                 login:true,
                 error:""});
-              
+           if(this.state.login) {return <Redirect to='/customers' /> }   
                       }
             else {this.setState({
                 error:"Invalid user",
@@ -54,11 +54,17 @@ import {Redirect, Route} from 'react-router-dom'
                 login:false
                 })}
          } 
+
+      logout = () =>{
+        this.setState({
+            login:false
+        })
+      }   
     
     render() { 
         return (
             <div>
-                <CheckLogin login={this.state.login} name={this.state.name} pass={this.state.pass} scheme={this.state.scheme} valid={this.state.valid} handleSubmit={this.handleSubmit} updatePass={this.updatePass} updateName={this.updateName} updateScheme={this.updateScheme} error={this.state.error}/>
+                <CheckLogin logout={this.logout} login={this.state.login} name={this.state.name} pass={this.state.pass} scheme={this.state.scheme} valid={this.state.valid} handleSubmit={this.handleSubmit} updatePass={this.updatePass} updateName={this.updateName} updateScheme={this.updateScheme} error={this.state.error}/>
             </div>
         )
     }
@@ -69,7 +75,7 @@ export default Main
 function CheckLogin(props) {
     if(props.login) {
         return (
-        <MainData login ={props.login} />
+        <MainData login ={props.login} logout={props.logout}/>
         )
      } 
         else {

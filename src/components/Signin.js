@@ -11,7 +11,7 @@ class Signin extends Component {
                     <div className="grid-11"></div>
                     <div className="grid-1 ">
                         <span className="loginText">User</span>
-                        <Link to="/"><i class="fa fa-power-off" aria-hidden="true"></i></Link>
+                        <Link to="/"><i class="fa fa-power-off" aria-hidden="true" onClick={this.props.logout}></i></Link>
                     </div>
                 </div> 
             </div>

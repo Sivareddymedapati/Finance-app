@@ -170,7 +170,7 @@ class FinanceExpenditure extends Component {
        
         return (
             <div>
-              <Signin />
+              
             <div>
             <div className="grid-2"></div>
                 <div className="grid-10">

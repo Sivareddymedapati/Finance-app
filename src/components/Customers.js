@@ -39,7 +39,7 @@ class Customers extends Component {
         let filteredData = [...filteredMobile].filter((user) => {return user.village.toLowerCase().indexOf(this.state.village.toLowerCase()) !== -1} )
         return (
             <div>
-                <Signin />
+                
                 
             <div>
             <div className="grid-2"></div>

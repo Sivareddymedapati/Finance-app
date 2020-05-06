@@ -8,7 +8,7 @@ class Login extends Component {
     
     render() {   
         
-        if(this.props.valid) {return <Redirect to='/customers' />}
+        if(this.props.login) {return <Redirect to='/customers' />}
 
         return (
            <div>
