@@ -75,7 +75,7 @@ export default Main
 function CheckLogin(props) {
     if(props.login) {
         return (
-        <MainData login ={props.login} logout={props.logout}/>
+        <MainData login ={props.login} logout={props.logout} scheme={props.scheme}/>
         )
      } 
         else {
