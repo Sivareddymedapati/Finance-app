@@ -46,7 +46,7 @@ import {Redirect, Route} from 'react-router-dom'
                 valid:true,
                 login:true,
                 error:""});
-           if(this.state.login) {return <Redirect to="/customers" /> }   
+           if(this.state.login) {return <Redirect to='/' /> }   
                       }
             else {this.setState({
                 error:"Invalid user",
