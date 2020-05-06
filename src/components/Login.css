@@ -1,0 +1,63 @@
+* {
+	box-sizing: border-box;
+	position: relative;
+}
+
+.nav_login{
+	height: 100%;
+    width: 235px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #7bbed6;
+    overflow-x: hidden;
+	padding-top: 20px;
+	font-size: 14px;
+  }
+  
+  .nav_bar {
+	  margin-top: 60px;
+	  font-size:12px;
+	  color:white;
+	  text-align: left;
+	  
+	  margin-left:20px;
+	  
+  }
+
+  .loginInput{
+	margin-top:20px;
+}
+
+  .nav_bar h2{
+	font-weight:normal;
+  }
+
+ .loginHeading{
+	 font-size: 20px;
+	 
+ } 
+	
+.input{
+  width:400px;
+  margin:5px;
+  margin-left:none;
+}
+
+.subBtn{
+ margin-left: 30px;
+ background-color:#7e909c;
+ color:white;
+}
+
+.formLabel{
+	margin:15px 0 15px 0;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.inputLabel{
+	list-style: none;
+	margin:none;
+}

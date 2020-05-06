@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Redirect, Link} from 'react-router-dom'
 import Loginbar from '../components/Loginbar'
+import '../components/Login.css'
 
 
 class Login extends Component {
