@@ -32,11 +32,11 @@ class Login extends Component {
                 </ul>
                 </div>
                 
-                <div className="grid-7 loginInput"> 
+                <div className="grid-7 loginDataEntry"> 
                     
-                    <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.props.name} onChange={this.props.updateName}/><br/>
-                    <input className="input" type="password" name="Password" required placeholder="Password" value={this.props.pass} onChange={this.props.updatePass} /><br/>
-                    <select className="input" name="SCHEME" required placeholder="Select Scheme" value={this.props.scheme} onChange={this.props.updateScheme}>
+                    <input className="dataEntry" type="text" name="User_Name" required placeholder="User Name" value={this.props.name} onChange={this.props.updateName}/><br/>
+                    <input className="dataEntry" type="password" name="Password" required placeholder="Password" value={this.props.pass} onChange={this.props.updatePass} /><br/>
+                    <select className="dataEntry" name="SCHEME" required placeholder="Select Scheme" value={this.props.scheme} onChange={this.props.updateScheme}>
                     <option></option>
                     <option value="SCHEME K">SCHEME K</option>
                     <option value="SCHEME L">SCHEME L</option>
