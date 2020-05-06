@@ -1,42 +1,14 @@
 import React, { Component } from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import Loginbar from '../components/Loginbar'
 
 
 class Login extends Component {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             name:"",
-             pass:"",
-             error:"",
-             valid:false
-        }
-    }
-    updateName = (event) => {
-       this.setState({
-            name:event.target.value
-        })
-    }
-    updatePass = (event) => {
-        this.setState({
-            pass:event.target.value
-        })
-    }
-   
-    handleSubmit = e => {
-        e.preventDefault()
-        if(this.state.name==="user" && this.state.pass==="a") {
-            this.setState({valid:true})
-          }
-            else {this.setState({error:"Invalid user"})}
-         }   
     
     render() {   
         
-        if(this.state.valid) {return <Redirect to='/customers' />}
+        if(this.props.valid) {return <Redirect to='/customers' />}
 
         return (
            <div>
@@ -44,7 +16,7 @@ class Login extends Component {
                <div className="grid-2"></div>
                <div className="grid-10">
                <div className="grid-1"></div>    
-               <form className="grid-7" onSubmit={this.handleSubmit}> 
+               <form className="grid-7" onSubmit={this.props.handleSubmit}> 
                 <div>
                 <div className="grid-2"></div>
                 <h1 class="grid-8 loginHeading">Financier Login</h1>
@@ -61,8 +33,8 @@ class Login extends Component {
                 
                 <div className="grid-7 loginInput"> 
                     
-                    <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.state.name} onChange={this.updateName}/><br/>
-                    <input className="input" type="password" name="Password" required placeholder="Password" value={this.state.pass} onChange={this.updatePass} /><br/>
+                    <input className="input" type="text" name="User_Name" required placeholder="User Name" value={this.props.name} onChange={this.props.updateName}/><br/>
+                    <input className="input" type="password" name="Password" required placeholder="Password" value={this.props.pass} onChange={this.props.updatePass} /><br/>
                     <select className="input" name="SCHEME" required placeholder="Select Scheme" value={this.props.scheme} onChange={this.props.updateScheme}>
                     <option></option>
                     <option value="SCHEME K">SCHEME K</option>
@@ -75,7 +47,7 @@ class Login extends Component {
                    <div className="grid-5"></div>
                    <button className="grid-2 subBtn" type="submit">Login</button>
                    </div>
-                   <div>{this.state.error}</div>
+                   <div>{this.props.error}</div>
                   
                  
                 </form> 

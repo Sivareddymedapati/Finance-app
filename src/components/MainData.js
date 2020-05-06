@@ -4,7 +4,7 @@ import Prize from '../components/Prize';
 import FinanceExpenditure from '../components/FinanceExpenditure'
 import FinanceToCustomers from '../components/FinanceToCustomers'
 import uuid from 'uuid';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom';
 import Navigation from '../components/Navigation'
 import Signin from './Signin'
 import Login from '../components/Login'
@@ -459,16 +459,13 @@ findDatapayment1 = (index,uuid) =>{
 
   
 
-   render(){
-    return (
-      <Router>
+   render(){ if(this.props.valid) {return <Redirect to='/customers' />}
+    return ( 
+      
         <Switch>
           <div>
             <Navigation scheme={this.state.scheme} ViewList={this.ViewList}/> 
-            <Route path="//" exact >
-              <Login scheme={this.state.scheme} updateScheme={this.updateScheme}/>
-            </Route>
-            <Route path="/customers" exact>
+            <Route path="/" exact>
               <Customers customersEditBtn = {this.state.customersEditBtn} show={this.state.show} hideModal={this.hideModal} showModal= {this.showModal} user={this.state.user} onInputChange={this.onDataChange} onSaveData={this.saveData}  users={this.state.users}  onFind={this.findData} />
             </Route>
             <Route path="/prize" exact>
@@ -492,7 +489,7 @@ findDatapayment1 = (index,uuid) =>{
             
           </div>
         </Switch>
-    </Router>
+    
       
     );
   }
