@@ -143,7 +143,7 @@ class MainData extends Component {
     let term = userpayment.term;
     let paidDate = userpayment.paidDate;
     let amount = parseInt(userpayment.amount);
-    ;
+    
 
        
     if (valid !== -1) {    
@@ -278,32 +278,40 @@ class MainData extends Component {
       usersfinance[index].paymentDate = paymentDate;
       usersfinance[index].amount = amount;
       usersfinance[index].paymentType = paymentType;
-       
-
-    console.log(this.state.usersfinance)
+    let paymentamount = userPayment.map((user) => {return user.amount})
+    let financepayment = userFinance.map((user) => {return user.amount})   
+    let paidamount
+    let financeamount
+  
+  if(paymentamount.length>0) {paidamount = paymentamount.reduce((total,value) => {return total+value})}
+      else {paidamount=0}
+  if(financepayment.length>0) {financeamount = financepayment.reduce((total,value) => {return total+value})} 
+      else {financeamount=0}   
+    
+  let actualamount = (paidamount)-(financeamount)
+    
     this.setState({
       usersfinance:usersfinance,
       actfinance1:0,
-      userfinance1: {...default_userfinance}
-    });
-    let paymentamount = userPayment.map((user) => {return user.amount})
-    let paidamount = paymentamount.reduce((total,value) => {return total+value})
-    let financepayment = userFinance.map((user) => {return user.amount})
-    let financeamount = financepayment.reduce((total,value) => {return total+value})
-    let actualamount = (paidamount)-(financeamount)
-    this.setState({
+      userfinance1: {...default_userfinance},
       paidamount:paidamount,
       financeamount:financeamount,
-      actualamount:actualamount})}
+      actualamount:actualamount,
+    });
+    
+     
+    }
       
 
    findDataFinance1 = (index,uuid) =>{
    
    let userfinance1 = this.state.userFinance.find((task) => {return task.uuid == uuid})
+   let uuidList = this.state.usersfinance.map((user) => {return user.uuid})
+   let uuidIndex = uuidList.indexOf(uuid)
    console.log(userfinance1)
    this.setState({
      actfinance1:1,
-     indexfinance1:index,
+     indexfinance1:uuidIndex,
      userfinance1:userfinance1,
      showfinance1: true,
      
@@ -315,23 +323,27 @@ deleteItemfinance1 = (index,uuid) =>{
   let {userspayment, userpayment1,usersfinance,userPayment,userFinance,reportid} = this.state;
   const newList = usersfinance.filter((user) => {return user.uuid !== uuid})
   let Finance = newList.filter((task) => {return task.id == reportid} )
+  let paymentamount = userPayment.map((user) => {return user.amount})
+  let financepayment = Finance.map((user) => {return user.amount})
+  let paidamount
+  let financeamount
+  
+  if(paymentamount.length>0) {paidamount = paymentamount.reduce((total,value) => {return total+value})}
+      else {paidamount=0}
+  if(financepayment.length>0) {financeamount = financepayment.reduce((total,value) => {return total+value})} 
+      else {financeamount=0}   
+    
+  let actualamount = (paidamount)-(financeamount)
    
   this.setState({
     usersfinance:newList,
     userFinance:Finance,
+    paidamount:paidamount,
+    financeamount:financeamount,
+    actualamount:actualamount
   })    
   
-    let paymentamount = userPayment.map((user) => {return user.amount})
-    let paidamount = paymentamount.reduce((total,value) => {return total+value})
-    let financepayment = Finance.map((user) => {return user.amount})
-    let financeamount = financepayment.reduce((total,value) => {return total+value})
-    let actualamount = (paidamount)-(financeamount) 
-    this.setState({
-      paidamount:paidamount,
-      financeamount:financeamount,
-      actualamount:actualamount,
-    })
-    
+      
 }
 
 
@@ -339,22 +351,31 @@ deleteItemPayments = (index,uuid) =>{
   let {userspayment, userpayment1,usersfinance,userPayment,userFinance,reportid} = this.state;
   const newList = userspayment.filter((user) => {return user.uuid !== uuid})
   let Payment = newList.filter((task) => {return task.id == reportid} )
-   
-  this.setState({
-    userspayment:newList,
-    userPayment:Payment,
-  })    
+  let paymentamount = Payment.map((user) => {return user.amount})
+  let financepayment = userFinance.map((user) => {return user.amount}) 
+  let paidamount
+  let financeamount
   
-    let paymentamount = Payment.map((user) => {return user.amount})
-    let paidamount = paymentamount.reduce((total,value) => {return total+value})
-    let financepayment = userFinance.map((user) => {return user.amount})
-    let financeamount = financepayment.reduce((total,value) => {return total+value})
-    let actualamount = (paidamount)-(financeamount) 
+  if(paymentamount.length>0) {paidamount = paymentamount.reduce((total,value) => {return total+value})}
+      else {paidamount=0}
+  if(financepayment.length>0) {financeamount = financepayment.reduce((total,value) => {return total+value})} 
+      else {financeamount=0}   
+    
+  let actualamount = (paidamount)-(financeamount)
+    
     this.setState({
+      userspayment:newList,
+      userPayment:Payment,
       paidamount:paidamount,
       financeamount:financeamount,
-      actualamount:actualamount,
+      actualamount:actualamount
     })
+
+    console.log(this.state.userspayment) 
+    console.log(newList)
+      
+    
+     
 }
 
 showModalpayment1 = () => {
@@ -379,34 +400,41 @@ onInputChangepayment1 = (e)=>{
 saveDatapayment1 = (e, props) =>{
   
   let {userspayment, userpayment1,userPayment,userFinance} = this.state;
+  console.log(userspayment)
   let id = userpayment1.id;
   let term = userpayment1.term;
   let paidDate = userpayment1.paidDate;
   let amount = parseInt(userpayment1.amount);
   let index = this.state.indexpayment1;
+  console.log(this.state.indexpayment1)
     userspayment[index].id = id;
     userspayment[index].term = term;
     userspayment[index].paidDate = paidDate;
     userspayment[index].amount = amount;
     
-     
+  let paymentamount = userPayment.map((user) => {return user.amount})
+  let financepayment = userFinance.map((user) => {return user.amount})
+  let paidamount
+  let financeamount
+  
+  if(paymentamount.length>0) {paidamount = paymentamount.reduce((total,value) => {return total+value})}
+      else {paidamount=0}
+  if(financepayment.length>0) {financeamount = financepayment.reduce((total,value) => {return total+value})} 
+      else {financeamount=0}   
+    
+  let actualamount = (paidamount)-(financeamount)
 
-  console.log(this.state.userspayment)
-  this.setState({
+    this.setState({
     userspayment:userspayment,
     actpayment1:0,
-    userpayment1: {...default_userpayment}
+    userpayment1: {...default_userpayment},
+    paidamount:paidamount,
+    financeamount:financeamount,
+    actualamount:actualamount,
   });
-    let paymentamount = userPayment.map((user) => {return user.amount})
-    let paidamount = paymentamount.reduce((total,value) => {return total+value})
-    let financepayment = userFinance.map((user) => {return user.amount})
-    let financeamount = financepayment.reduce((total,value) => {return total+value})
-    let actualamount = (paidamount)-(financeamount)
-    this.setState({
-      paidamount:paidamount,
-      financeamount:financeamount,
-      actualamount:actualamount
-    })}
+    
+   
+  }
     
 
 
@@ -414,28 +442,34 @@ saveDatapayment1 = (e, props) =>{
 findDatapayment1 = (index,uuid) =>{
  
  let userpayment1 = this.state.userPayment.find((task) => {return task.uuid == uuid})
- console.log(userpayment1)
- this.setState({
+ let uuidList = this.state.userspayment.map((user) => {return user.uuid})
+ let uuidIndex = uuidList.indexOf(uuid)
+  this.setState({
    actpayment1:1,
-   indexpayment1:index,
+   indexpayment1:uuidIndex,
    userpayment1:userpayment1,
    showpayment1: true,
    
-   
  });
+ console.log(this.state.indexpayment1)
 }
 
   findUser = (id) =>{
-    console.log(id)
+    
     let Details = this.state.users.filter((task) => {return task.id == id})
     let Finance = this.state.usersfinance.filter((task) => {return task.id == id} )
     let Payment = this.state.userspayment.filter((task) => {return task.id ==id})
     let paymentamount = Payment.map((user) => {return user.amount})
-    let paidamount = paymentamount.reduce((total,value) => {return total+value})
     let financepayment = Finance.map((user) => {return user.amount})
-    let financeamount = financepayment.reduce((total,value) => {return total+value})
+    let paidamount
+    let financeamount
+    
+    if(paymentamount.length>0) {paidamount = paymentamount.reduce((total,value) => {return total+value})}
+        else {paidamount=0}
+    if(financepayment.length>0) {financeamount = financepayment.reduce((total,value) => {return total+value})} 
+        else {financeamount=0}   
+      
     let actualamount = (paidamount)-(financeamount)
-
     this.setState({
       reportid:id,
       userDetails:Details,
@@ -446,9 +480,9 @@ findDatapayment1 = (index,uuid) =>{
       financeamount:financeamount,
       actualamount:actualamount
     })
-    console.log(this.state.userDetails)
-    console.log(this.state.userFinance)
-    console.log(this.state.userPayment)
+   
+    
+
   }
 
   ViewList = () => {
